@@ -9,13 +9,11 @@ export interface BentoCardProps {
   textAutoHide?: boolean;
   disableAnimations?: boolean;
   image?: string;
-  icon?: React.ReactNode;
   colSpan?: number;
   rowSpan?: number;
 }
 
 export interface BentoProps {
-  cards?: BentoCardProps[];
   textAutoHide?: boolean;
   enableStars?: boolean;
   enableSpotlight?: boolean;
@@ -31,45 +29,49 @@ export interface BentoProps {
 
 const DEFAULT_PARTICLE_COUNT = 12;
 const DEFAULT_SPOTLIGHT_RADIUS = 300;
-const DEFAULT_GLOW_COLOR = '212, 246, 0';
+const DEFAULT_GLOW_COLOR = '132, 0, 255';
 const MOBILE_BREAKPOINT = 768;
 
 const cardData: BentoCardProps[] = [
   {
-    color: '#060010',
-    title: 'Analytics',
-    description: 'Track user behavior',
-    label: 'Insights'
+    colSpan: 2,
+    rowSpan: 2,
+    title: 'Web Development',
+    label: 'Architecture',
+   // description: 'Next.js architecture with high-performance optimization. We build the internet of tomorrow, today.',
+    image: '/webdev.webp',
   },
   {
-    color: '#060010',
-    title: 'Dashboard',
-    description: 'Centralized data view',
-    label: 'Overview'
+   
+    title: 'Mobile Apps',
+    label: 'Native',
+    //description: 'Native iOS & Android experiences that feel intuitive and fluid.',
+    image: '/appdev.avif',
   },
   {
-    color: '#060010',
-    title: 'Collaboration',
-    description: 'Work together seamlessly',
-    label: 'Teamwork'
+    
+    title: 'UI/UX Design',
+    label: 'Creative',
+    image: '/uiux.png',
   },
   {
-    color: '#060010',
-    title: 'Automation',
-    description: 'Streamline workflows',
-    label: 'Efficiency'
+   
+    title: 'AI Integration',
+    label: 'Intelligence',
+    image: '/aiml.jpeg',
   },
   {
-    color: '#060010',
-    title: 'Integration',
-    description: 'Connect favorite tools',
-    label: 'Connectivity'
+   
+    title: 'Custom Solutions',
+    label: 'Backend',
+    image: '/backend.webp',
+    color: '#18181b'
   },
   {
-    color: '#060010',
-    title: 'Security',
-    description: 'Enterprise-grade protection',
-    label: 'Protection'
+    title: 'Cloud Architecture',
+    label: 'Infrastructure',
+    image: '/cloud.avif',
+    color: '#0d0d14'
   }
 ];
 
@@ -173,7 +175,7 @@ const ParticleCard: React.FC<{
     }
 
     memoizedParticles.current.forEach((particle, index) => {
-      const timeoutId = window.setTimeout(() => {
+      const timeoutId = setTimeout(() => {
         if (!isHoveredRef.current || !cardRef.current) return;
 
         const clone = particle.cloneNode(true) as HTMLDivElement;
@@ -521,7 +523,6 @@ const useMobileDetection = () => {
 };
 
 const MagicBento: React.FC<BentoProps> = ({
-  cards = cardData,
   textAutoHide = true,
   enableStars = true,
   enableSpotlight = true,
@@ -551,9 +552,9 @@ const MagicBento: React.FC<BentoProps> = ({
             --border-color: #392e4e;
             --background-dark: #060010;
             --white: hsl(0, 0%, 100%);
-            --purple-primary: rgba(212, 246, 0, 1);
-            --purple-glow: rgba(212, 246, 0, 0.2);
-            --purple-border: rgba(212, 246, 0, 0.8);
+            --purple-primary: rgba(132, 0, 255, 1);
+            --purple-glow: rgba(132, 0, 255, 0.2);
+            --purple-border: rgba(132, 0, 255, 0.8);
           }
           
           .card-responsive {
@@ -571,7 +572,22 @@ const MagicBento: React.FC<BentoProps> = ({
           
           @media (min-width: 1024px) {
             .card-responsive {
-              grid-template-columns: repeat(3, 1fr);
+              grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .card-responsive .card:nth-child(3) {
+              grid-column: span 2;
+              grid-row: span 2;
+            }
+            
+            .card-responsive .card:nth-child(4) {
+              grid-column: 1 / span 2;
+              grid-row: 2 / span 2;
+            }
+            
+            .card-responsive .card:nth-child(6) {
+              grid-column: 4;
+              grid-row: 3;
             }
           }
           
@@ -665,13 +681,10 @@ const MagicBento: React.FC<BentoProps> = ({
 
       <BentoCardGrid gridRef={gridRef}>
         <div className="card-responsive grid gap-2">
-          {cards.map((card, index) => {
-            const colSpan = card.colSpan || 1;
-            const rowSpan = card.rowSpan || 1;
-            
-            const baseClassName = `card flex flex-col justify-between relative min-h-[200px] w-full max-w-full p-5 rounded-[20px] border border-solid font-light overflow-hidden transition-colors duration-300 ease-in-out hover:-translate-y-0.5 hover:shadow-[0_8px_25px_rgba(0,0,0,0.15)] ${
+          {cardData.map((card, index) => {
+            const baseClassName = `group card flex flex-col justify-between relative aspect-[4/3] min-h-[200px] w-full max-w-full p-5 rounded-[20px] border border-solid font-light overflow-hidden transition-colors duration-300 ease-in-out hover:-translate-y-0.5 hover:shadow-[0_8px_25px_rgba(0,0,0,0.15)] ${
               enableBorderGlow ? 'card--border-glow' : ''
-            } col-span-1 md:col-span-${colSpan} row-span-1 md:row-span-${rowSpan}`;
+            }`;
 
             const cardStyle = {
               backgroundColor: card.color || 'var(--background-dark)',
@@ -697,23 +710,29 @@ const MagicBento: React.FC<BentoProps> = ({
                   enableMagnetism={enableMagnetism}
                 >
                   {card.image && (
-                     <div className="absolute inset-0 opacity-40 group-hover:opacity-20 transition-opacity duration-500 z-0">
-                        <img src={card.image} className="w-full h-full object-cover grayscale" alt={card.title} />
-                     </div>
+                    <div className="absolute inset-0 z-0 pointer-events-none">
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-[1]" />
+                      <img
+                        src={card.image}
+                        alt={card.title || ''}
+                        className="w-full h-full object-cover opacity-50 transition-transform duration-700 ease-out group-hover:scale-110"
+                      />
+                    </div>
                   )}
-                  <div className="card__header flex justify-between gap-3 relative text-white z-10">
-                    <span className="card__label text-base">{card.label}</span>
-                    {card.icon && <div className="text-white">{card.icon}</div>}
+                  <div className="card__header flex justify-between gap-3 relative z-[2] text-white">
+                    <span className="card__label text-base opacity-80">{card.label}</span>
                   </div>
-                  <div className="card__content flex flex-col relative text-white z-10">
+                  <div className="card__content flex flex-col relative z-[2] text-white">
                     <h3 className={`card__title font-normal text-base m-0 mb-1 ${textAutoHide ? 'text-clamp-1' : ''}`}>
                       {card.title}
                     </h3>
-                    <p
-                      className={`card__description text-xs leading-5 opacity-90 ${textAutoHide ? 'text-clamp-2' : ''}`}
-                    >
-                      {card.description}
-                    </p>
+                    {card.description && (
+                      <p
+                        className={`card__description text-xs leading-5 opacity-70 ${textAutoHide ? 'text-clamp-2' : ''}`}
+                      >
+                        {card.description}
+                      </p>
+                    )}
                   </div>
                 </ParticleCard>
               );
@@ -835,21 +854,27 @@ const MagicBento: React.FC<BentoProps> = ({
                 }}
               >
                 {card.image && (
-                     <div className="absolute inset-0 opacity-40 group-hover:opacity-20 transition-opacity duration-500 z-0 select-none pointer-events-none">
-                        <img src={card.image} className="w-full h-full object-cover grayscale" alt={card.title} />
-                     </div>
+                  <div className="absolute inset-0 z-0 pointer-events-none">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-[1]" />
+                    <img
+                      src={card.image}
+                      alt={card.title || ''}
+                      className="w-full h-full object-cover opacity-50 transition-transform duration-700 ease-out group-hover:scale-110"
+                    />
+                  </div>
                 )}
-                <div className="card__header flex justify-between gap-3 relative text-white z-10">
-                  <span className="card__label text-base">{card.label}</span>
-                  {card.icon && <div className="text-white">{card.icon}</div>}
+                <div className="card__header flex justify-between gap-3 relative z-[2] text-white">
+                  <span className="card__label text-base opacity-80">{card.label}</span>
                 </div>
-                <div className="card__content flex flex-col relative text-white z-10">
+                <div className="card__content flex flex-col relative z-[2] text-white">
                   <h3 className={`card__title font-normal text-base m-0 mb-1 ${textAutoHide ? 'text-clamp-1' : ''}`}>
                     {card.title}
                   </h3>
-                  <p className={`card__description text-xs leading-5 opacity-90 ${textAutoHide ? 'text-clamp-2' : ''}`}>
-                    {card.description}
-                  </p>
+                  {card.description && (
+                    <p className={`card__description text-xs leading-5 opacity-70 ${textAutoHide ? 'text-clamp-2' : ''}`}>
+                      {card.description}
+                    </p>
+                  )}
                 </div>
               </div>
             );

@@ -8,6 +8,7 @@ import { Hero } from '@/components/landing/Hero';
 import { Services } from '@/components/landing/Services';
 import { Process } from '@/components/landing/Process';
 import { Portfolio } from '@/components/landing/Portfolio';
+import { Team } from '@/components/landing/Team';
 import { Testimonials } from '@/components/landing/Testimonials';
 import { Clients } from '@/components/landing/Clients';
 import { FAQ } from '@/components/landing/FAQ';
@@ -17,13 +18,15 @@ import { Footer } from '@/components/landing/Footer';
 export default function Home() {
   return (
     <div className="min-h-screen bg-black text-white selection:bg-white selection:text-black">
-      <SplashCursor />
+      {/* <SplashCursor /> */}
       <Header />
       <main>
+        
         <Hero />
         <Services />
         <Process />
         <Portfolio />
+        <Team />
         <Testimonials />
         <Clients />
         <FAQ />
