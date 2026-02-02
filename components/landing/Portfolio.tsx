@@ -75,7 +75,7 @@ export function Portfolio() {
                     displayOverlayContent={true}
                     overlayContent={
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-8 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                             <span className="font-outfit text-purple-400 text-xs uppercase tracking-widest mb-2 border border-purple-500/30 w-fit px-3 py-1 rounded-full backdrop-blur-md bg-black/50">{item.category}</span>
+                             <span className="font-outfit text-secondary text-xs uppercase tracking-widest mb-2 border border-secondary/30 w-fit px-3 py-1 rounded-full backdrop-blur-md bg-black/50">{item.category}</span>
                              <h3 className="font-cinzel text-3xl text-white mb-2">{item.title}</h3>
                              <p className="font-outfit text-zinc-400 text-sm transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">{item.description}</p>
                         </div>

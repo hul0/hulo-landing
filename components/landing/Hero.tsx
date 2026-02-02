@@ -4,26 +4,51 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import AnimatedContent from '@/components/AnimatedContent';
 import StarBorder from '@/components/StarBorder';
+import Hyperspeed from '@/components/Hyperspeed';
 
 export function Hero() {
   return (
     
-    <section className="relative min-h-screen flex items-center justify-center pt-32 pb-20 overflow-hidden bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-zinc-900/20 via-[#0a0a0c] to-[#0a0a0c]">
-       {/* Abstract Background Imagery */}
-       <motion.div 
-         animate={{ y: [0, -20, 0], rotate: [6, 8, 6] }}
-         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-         className="absolute top-20 right-10 w-[300px] h-[400px] opacity-20 mix-blend-screen pointer-events-none"
-       >
-          <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop" className="w-full h-full object-cover rounded-[50px]" alt="Abstract" />
-       </motion.div>
-       <motion.div 
-         animate={{ y: [0, 30, 0], rotate: [-12, -10, -12] }}
-         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-         className="absolute bottom-20 left-10 w-[250px] h-[350px] opacity-20 mix-blend-screen pointer-events-none"
-       >
-          <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=800&auto=format&fit=crop" className="w-full h-full object-cover rounded-[100px]" alt="Retro Tech" />
-       </motion.div>
+    <section className="relative min-h-screen flex items-center justify-center pt-32 pb-20 overflow-hidden bg-[#0a0a0c]">
+       <div className="absolute inset-0 z-0">
+         <Hyperspeed 
+           effectOptions={{
+             distortion: 'xyDistortion',
+             length: 400,
+             roadWidth: 9,
+             islandWidth: 2,
+             lanesPerRoad: 3,
+             fov: 90,
+             fovSpeedUp: 150,
+             speedUp: 3,
+             carLightsFade: 0.4,
+             totalSideLightSticks: 50,
+             lightPairsPerRoadWay: 30,
+             shoulderLinesWidthPercentage: 0.05,
+             brokenLinesWidthPercentage: 0.1,
+             brokenLinesLengthPercentage: 0.5,
+             lightStickWidth: [0.02, 0.05],
+             lightStickHeight: [0.3, 0.7],
+             movingAwaySpeed: [20, 50],
+             movingCloserSpeed: [-150, -230],
+             carLightsLength: [20, 80],
+             carLightsRadius: [0.03, 0.08],
+             carWidthPercentage: [0.1, 0.5],
+             carShiftX: [-0.5, 0.5],
+             carFloorSeparation: [0, 0.1],
+             colors: {
+               roadColor: 0x080808,
+               islandColor: 0x0a0a0a,
+               background: 0x000000,
+               shoulderLines: 0x131318,
+               brokenLines: 0x131318,
+                leftCars: [0xD4F600, 0xa90519, 0xff1010],
+               rightCars: [0xf1f1f1, 0xe6e6e6, 0xdfdfe0],
+               sticks: 0xf1f1f1,
+             }
+           }}
+         />
+       </div>
 
       <div className="container mx-auto px-6 relative z-10 text-center">
         <AnimatedContent
@@ -44,8 +69,8 @@ export function Hero() {
             </div>
 
             <h1 className="font-abril text-7xl md:text-9xl tracking-tight leading-[0.9] text-white">
-              DIGITAL <br />
-              <span className="italic font-playfair pr-4 text-purple-200">Mastery</span>
+              ALL ROADS LEAD TO <br />
+              <span className="italic font-playfair pr-4 text-secondary">Mastery</span>
             </h1>
             
             <p className="font-outfit text-2xl md:text-3xl text-zinc-400 max-w-3xl mx-auto leading-relaxed">

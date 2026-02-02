@@ -50,7 +50,7 @@ export default function RootLayout({
           ${abril.variable}
           ${dmSerif.variable}
           ${syne.variable}
-          antialiased bg-background text-foreground selection:bg-primary/20 selection:text-primary
+          antialiased bg-background text-foreground selection:bg-secondary/20 selection:text-secondary
         `}
       >
         {children}

@@ -38,7 +38,7 @@ export function Process() {
             <h2 className="text-5xl md:text-7xl font-cinzel text-white mb-6">
                <SplitText text="The Process" className="" delay={50} />
             </h2>
-            <div className="h-1 w-24 bg-purple-500 mx-auto"></div>
+            <div className="h-1 w-24 bg-secondary mx-auto"></div>
         </div>
 
         <div ref={containerRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -48,12 +48,12 @@ export function Process() {
                     initial={{ opacity: 0, y: 50 }}
                     animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
                     transition={{ duration: 0.6, delay: index * 0.2 }}
-                    className="group relative p-8 border border-white/5 rounded-[30px] bg-white/[0.02] hover:bg-white/[0.05] transition-colors hover:border-purple-500/30"
+                    className="group relative p-8 border border-white/5 rounded-[30px] bg-white/[0.02] hover:bg-white/[0.05] transition-colors hover:border-secondary/30"
                 >
-                    <span className="font-outfit text-6xl text-white/5 font-bold absolute top-4 right-6 group-hover:text-purple-500/20 transition-colors">
+                    <span className="font-outfit text-6xl text-white/5 font-bold absolute top-4 right-6 group-hover:text-secondary/20 transition-colors">
                         {step.id}
                     </span>
-                    <h3 className="font-syne text-2xl text-white mb-4 mt-8 group-hover:text-purple-400 transition-colors">{step.title}</h3>
+                    <h3 className="font-syne text-2xl text-white mb-4 mt-8 group-hover:text-secondary transition-colors">{step.title}</h3>
                     <p className="font-outfit text-zinc-400 text-sm leading-relaxed">
                         {step.description}
                     </p>

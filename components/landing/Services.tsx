@@ -59,7 +59,7 @@ export function Services() {
           className="mb-20"
         >
            <h2 className="font-cinzel text-5xl md:text-6xl mb-6 text-white">Our Craft</h2>
-           <div className="h-1 w-20 bg-purple-500"></div>
+           <div className="h-1 w-20 bg-secondary"></div>
         </motion.div>
 
         <motion.div
@@ -75,7 +75,7 @@ export function Services() {
             enableBorderGlow={true}
             enableTilt={true}
             spotlightRadius={300}
-            glowColor="rgba(168, 85, 247, 0.4)" // Purple glow
+            glowColor="rgba(212, 246, 0, 0.4)" // Neon Yellow glow
           />
         </motion.div>
       </div>

@@ -53,8 +53,8 @@ export function FAQ() {
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
                 >
-                  <AccordionItem value={`item-${index}`} className="border border-white/5 rounded-2xl px-6 data-[state=open]:bg-white/[0.03] data-[state=open]:border-purple-500/30 transition-all">
-                    <AccordionTrigger className="font-syne text-xl text-white hover:text-purple-400 hover:no-underline py-6 transition-colors">
+                  <AccordionItem value={`item-${index}`} className="border border-white/5 rounded-2xl px-6 data-[state=open]:bg-white/[0.03] data-[state=open]:border-secondary/30 transition-all">
+                    <AccordionTrigger className="font-syne text-xl text-white hover:text-secondary hover:no-underline py-6 transition-colors">
                       {faq.question}
                     </AccordionTrigger>
                     <AccordionContent className="font-outfit text-zinc-400 text-base leading-relaxed pb-6">

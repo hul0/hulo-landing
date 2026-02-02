@@ -31,7 +31,7 @@ export interface BentoProps {
 
 const DEFAULT_PARTICLE_COUNT = 12;
 const DEFAULT_SPOTLIGHT_RADIUS = 300;
-const DEFAULT_GLOW_COLOR = '132, 0, 255';
+const DEFAULT_GLOW_COLOR = '212, 246, 0';
 const MOBILE_BREAKPOINT = 768;
 
 const cardData: BentoCardProps[] = [
@@ -173,7 +173,7 @@ const ParticleCard: React.FC<{
     }
 
     memoizedParticles.current.forEach((particle, index) => {
-      const timeoutId = setTimeout(() => {
+      const timeoutId = window.setTimeout(() => {
         if (!isHoveredRef.current || !cardRef.current) return;
 
         const clone = particle.cloneNode(true) as HTMLDivElement;
@@ -551,9 +551,9 @@ const MagicBento: React.FC<BentoProps> = ({
             --border-color: #392e4e;
             --background-dark: #060010;
             --white: hsl(0, 0%, 100%);
-            --purple-primary: rgba(132, 0, 255, 1);
-            --purple-glow: rgba(132, 0, 255, 0.2);
-            --purple-border: rgba(132, 0, 255, 0.8);
+            --purple-primary: rgba(212, 246, 0, 1);
+            --purple-glow: rgba(212, 246, 0, 0.2);
+            --purple-border: rgba(212, 246, 0, 0.8);
           }
           
           .card-responsive {

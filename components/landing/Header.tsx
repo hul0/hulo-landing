@@ -26,7 +26,7 @@ export function Header() {
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
         <Link href="/" className="font-cinzel text-3xl font-bold tracking-tight text-white hover:opacity-80 transition-opacity">
-          HULO<span className="text-purple-500">.</span>
+          HULO<span className="text-secondary">.</span>
         </Link>
 
         <div className="hidden md:block">
@@ -39,10 +39,10 @@ export function Header() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.5 + (i * 0.1), duration: 0.5 }}
                   >
-                    <Link href={`#${item.toLowerCase()}`} legacyBehavior passHref>
+                    <Link href={`#${item.toLowerCase()}`} >
                       <NavigationMenuLink className="font-outfit text-xs uppercase tracking-widest text-zinc-400 hover:text-white transition-colors cursor-pointer relative group">
                         {item}
-                        <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-purple-500 transition-all group-hover:w-full"></span>
+                        <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-secondary transition-all group-hover:w-full"></span>
                       </NavigationMenuLink>
                     </Link>
                   </motion.div>
@@ -78,7 +78,7 @@ export function Header() {
             <SheetContent className="bg-[#0a0a0c] border-zinc-800 text-white">
               <div className="flex flex-col gap-8 mt-20 font-cinzel text-4xl">
                 {['Services', 'Work', 'Clients', 'Contact'].map((item) => (
-                  <Link key={item} href={`#${item.toLowerCase()}`} className="hover:text-purple-500 transition-colors">
+                  <Link key={item} href={`#${item.toLowerCase()}`} className="hover:text-secondary transition-colors">
                     {item}
                   </Link>
                 ))}
